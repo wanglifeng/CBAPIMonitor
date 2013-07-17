@@ -143,6 +143,7 @@
     <Compile Include="TestSections\JobDetail.cs" />
     <Compile Include="TestSections\JobSearch.cs" />
     <Compile Include="TestSections\UploadResume.cs" />
+    <Compile Include="TestSections\UserCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
