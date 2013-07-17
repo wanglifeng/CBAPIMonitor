@@ -3,19 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using RestSharp;
 
 namespace CBAPITimeTest.TestSections
 {
-    public class UploadResume : ITestSection
+    class UploadResume : TestSectionBase
     {
 
-        public IRestRequest Request
+        protected override void BuildRequest(RestSharp.IRestRequest request)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
         }
     }
 }

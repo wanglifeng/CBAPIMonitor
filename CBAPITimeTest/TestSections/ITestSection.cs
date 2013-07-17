@@ -6,8 +6,20 @@ using RestSharp;
 
 namespace CBAPITimeTest.TestSections
 {
-    interface ITestSection
+    abstract class TestSectionBase
     {
-        IRestRequest Request { get; }
+        public IRestRequest Request
+        {
+            get
+            {
+                var request = new RestRequest();
+                BuildRequest(request);
+                return request;
+            }
+        }
+
+        public virtual Boolean RequireHTTPS { get { return false; } }
+
+        protected abstract void BuildRequest(IRestRequest request);
     }
 }
