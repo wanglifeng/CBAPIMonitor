@@ -20,7 +20,7 @@ namespace CBAPITimeTest.Controllers
         public ActionResult Monitor(String testSection)
         {
             var client = new RestClient();
-            client.BaseUrl = "http://api.careerbuilder.com";
+            client.BaseUrl = "http://api.careerbuilder.com";  
 
 
             ITestSection section = null;
