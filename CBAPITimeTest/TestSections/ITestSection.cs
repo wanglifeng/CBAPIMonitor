@@ -9,5 +9,6 @@ namespace CBAPITimeTest.TestSections
     interface ITestSection
     {
         IRestRequest Request { get; }
+        bool RequireHTTPS { get; }
     }
 }

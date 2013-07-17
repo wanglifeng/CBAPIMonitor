@@ -21,5 +21,13 @@ namespace CBAPITimeTest.TestSections
                 return request;
             }
         }
+
+        public bool RequireHTTPS
+        {
+            get
+            {
+                return false;
+            }
+        }
     }
 }

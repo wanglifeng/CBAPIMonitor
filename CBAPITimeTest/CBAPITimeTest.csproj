@@ -142,9 +142,10 @@
     <Compile Include="TestSections\ITestSection.cs" />
     <Compile Include="TestSections\JobDetail.cs" />
     <Compile Include="TestSections\JobSearch.cs" />
-    <Compile Include="TestSections\UploadResume.cs" />
+    <Compile Include="TestSections\ParseResume.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="attachments\demoresume.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

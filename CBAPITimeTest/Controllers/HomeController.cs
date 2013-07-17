@@ -20,7 +20,7 @@ namespace CBAPITimeTest.Controllers
         public ActionResult Monitor(String testSection)
         {
             var client = new RestClient();
-            client.BaseUrl = "http://api.careerbuilder.com";
+            client.BaseUrl = "https://api.careerbuilder.com";
 
 
             object section = null;
@@ -36,9 +36,10 @@ namespace CBAPITimeTest.Controllers
             }
             if (section is ITestSection)
             {
-
                 try
                 {
+                    if ((section as ITestSection).RequireHTTPS) client.BaseUrl = "https://api.careerbuilder.com";
+
                     var response = client.Execute((section as ITestSection).Request);
                     return new ContentResult() { Content = "Call API successfully" };
                 }

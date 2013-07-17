@@ -16,5 +16,13 @@ namespace CBAPITimeTest.TestSections
                 throw new NotImplementedException();
             }
         }
+
+        public bool RequireHTTPS
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }
