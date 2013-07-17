@@ -28,9 +28,7 @@ namespace CBAPITimeTest.Controllers
             try
             {
                 Assembly asm = Assembly.GetExecutingAssembly();
-                section = asm.CreateInstance("CBAPITimeTest.TestSections." + testSection, true) as ITestSection;
-                //section = Activator.CreateInstanceFrom(null, "CBAPITimeTest.TestSections." + testSection).Unwrap() as ITestSection;
-                
+                section = asm.CreateInstance("CBAPITimeTest.TestSections." + testSection, true) as ITestSection;                
                 var response = client.Execute(section.Request);
 
                 return new ContentResult() { Content = "Monitor" };
