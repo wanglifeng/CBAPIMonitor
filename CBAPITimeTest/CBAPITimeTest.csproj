@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSections\CreateResume.cs" />
     <Compile Include="TestSections\ITestSection.cs" />
+    <Compile Include="TestSections\JobDetail.cs" />
     <Compile Include="TestSections\JobSearch.cs" />
     <Compile Include="TestSections\UploadResume.cs" />
   </ItemGroup>
