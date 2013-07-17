@@ -20,23 +20,38 @@ namespace CBAPITimeTest.Controllers
         public ActionResult Monitor(String testSection)
         {
             var client = new RestClient();
-            client.BaseUrl = "http://api.careerbuilder.com";  
+            client.BaseUrl = "http://api.careerbuilder.com";
 
 
-            ITestSection section = null;
+            object section = null;
 
             try
             {
                 Assembly asm = Assembly.GetExecutingAssembly();
-                section = asm.CreateInstance("CBAPITimeTest.TestSections." + testSection, true) as ITestSection;                
-                var response = client.Execute(section.Request);
-
-                return new ContentResult() { Content = "Monitor" };
+                section = asm.CreateInstance("CBAPITimeTest.TestSections." + testSection, true);
             }
             catch (Exception e)
             {
                 return new ContentResult() { Content = String.Format("CLASS: {0} NOT FOUND", testSection) };
             }
+            if (section is ITestSection)
+            {
+
+                try
+                {
+                    var response = client.Execute((section as ITestSection).Request);
+                    return new ContentResult() { Content = "Call API successfully" };
+                }
+                catch (Exception e)
+                {
+                    return new ContentResult() { Content = String.Format("Exception: {0}", e.Message) };
+                }
+            }
+            else
+            {
+                return new ContentResult() { Content = string.Format("{0} doesn't implement ITestSection!!") };
+            }
+
         }
 
     }
