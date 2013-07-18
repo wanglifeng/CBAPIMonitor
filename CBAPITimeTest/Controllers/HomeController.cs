@@ -29,7 +29,7 @@ namespace CBAPITimeTest.Controllers
                 Assembly asm = Assembly.GetExecutingAssembly();
                 section = asm.CreateInstance("CBAPITimeTest.TestSections." + testSection, true);
             }
-            catch 
+            catch
             {
                 return new ContentResult() { Content = String.Format("CLASS: {0} NOT FOUND", testSection) };
             }
@@ -38,8 +38,19 @@ namespace CBAPITimeTest.Controllers
                 if ((section as TestSectionBase).RequireHTTPS) client.BaseUrl = "https://api.careerbuilder.com";
                 try
                 {
+                    Stopwatch sw = new Stopwatch();
+                    sw.Start();
                     var response = client.Execute((section as TestSectionBase).Request);
-                    return new ContentResult() { Content = "Call API successfully" };
+                    sw.Stop();
+                    System.IO.File.AppendAllText(Server.MapPath("~/logs/logs.txt"), String.Format("Class:{0}\tTime:{1}\tDate:{2}{3}", testSection, sw.ElapsedMilliseconds, DateTime.Now, System.Environment.NewLine));
+                    if (Request.QueryString["debug"] == "true")
+                    {
+                        return new ContentResult() { Content = response.Content };
+                    }
+                    else
+                    {
+                        return new ContentResult() { Content = "Call API successfully" };
+                    }
                 }
                 catch (Exception e)
                 {

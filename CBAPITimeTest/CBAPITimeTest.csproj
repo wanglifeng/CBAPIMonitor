@@ -150,11 +150,11 @@
     <Compile Include="TestSections\RetrieveUser.cs" />
     <Compile Include="TestSections\UploadResume.cs" />
     <Compile Include="TestSections\UserCreate.cs" />
->>>>>>> 0447b4423c073172591b0f01b3cdeeecca627206
   </ItemGroup>
   <ItemGroup>
     <Content Include="attachments\demoresume.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Logs\logs.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -21,6 +21,5 @@ namespace CBAPITimeTest.TestSections
         public virtual Boolean RequireHTTPS { get { return false; } }
 
         protected abstract void BuildRequest(IRestRequest request);
-        bool RequireHTTPS { get; }
     }
 }
