@@ -6,20 +6,15 @@ using System.Web;
 
 namespace CBAPITimeTest.TestSections
 {
-    public class JobSearch : ITestSection
+    class JobSearch : TestSectionBase
     {
 
-        public RestSharp.IRestRequest Request
+        protected override void BuildRequest(IRestRequest request)
         {
-            get
-            {
-                var request = new RestRequest();
-                request.Resource = "v1/jobsearch";
-                request.Method = Method.GET;
-                request.AddParameter("developerkey", "WD1B37Z74Y7BL07ZM89B", ParameterType.GetOrPost);
-                request.AddParameter("countrycode", "CN", ParameterType.GetOrPost);
-                return request;
-            }
+            request.Resource = "v1/jobsearch";
+            request.Method = Method.GET;
+            request.AddParameter("developerkey", "WD1B37Z74Y7BL07ZM89B", ParameterType.GetOrPost);
+            request.AddParameter("countrycode", "CN", ParameterType.GetOrPost);
         }
 
         public bool RequireHTTPS

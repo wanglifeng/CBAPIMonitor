@@ -138,13 +138,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializer\NonSerializer.cs" />
+    <Compile Include="TestSections\CheckUserPassword.cs" />
     <Compile Include="TestSections\CreateResume.cs" />
+    <Compile Include="TestSections\GetResumeList.cs" />
     <Compile Include="TestSections\ITestSection.cs" />
     <Compile Include="TestSections\JobDetail.cs" />
     <Compile Include="TestSections\JobSearch.cs" />
-<<<<<<< HEAD
     <Compile Include="TestSections\ParseResume.cs" />
-=======
+    <Compile Include="TestSections\RetrieveResume.cs" />
+    <Compile Include="TestSections\RetrieveUser.cs" />
     <Compile Include="TestSections\UploadResume.cs" />
     <Compile Include="TestSections\UserCreate.cs" />
 >>>>>>> 0447b4423c073172591b0f01b3cdeeecca627206

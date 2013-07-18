@@ -1,42 +1,24 @@
-﻿using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
+using RestSharp;
+using CBAPITimeTest.Serializer;
 
 namespace CBAPITimeTest.TestSections
 {
-    public class ParseResume : ITestSection
+    class ParseResume : TestSectionBase
     {
-
-        public IRestRequest Request
+        protected override void BuildRequest(IRestRequest request)
         {
-            get
-            {
-                var request = new RestRequest();
-                request.Resource = "v2/resume/upload";
-                request.Method = RestSharp.Method.POST;
-                request.RequestFormat = RestSharp.DataFormat.Xml;
-
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("<Request>");
-                sb.AppendLine("<DeveloperKey></DeveloperKey>");
-                sb.AppendLine("<Test>true</Test>");
-                sb.AppendLine("<FileName>demoresume.txt</FileName>");
-                sb.AppendLine("<FileBytes>" + System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/attachments/demoresume.txt")) + "</FileBytes>");
-                sb.AppendLine("</Request>");
-                request.AddBody(sb.ToString());
-                return request;
-            }
+            request.XmlSerializer = new NonSerializer();
+            request.Method = Method.POST;
+            request.Resource = "v2/resume/parse";
+            request.RequestFormat = DataFormat.Xml;
+            var str = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("helloworld".ToCharArray()));
+            request.AddBody("<Request><DeveloperKey>WD1B37Z74Y7BL07ZM89B</DeveloperKey><Test>true</Test><FileName>a.txt</FileName><FileBytes>" + str + "</FileBytes></Request>");
         }
 
-        public bool RequireHTTPS
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool RequireHTTPS { get { return true; } }
     }
 }

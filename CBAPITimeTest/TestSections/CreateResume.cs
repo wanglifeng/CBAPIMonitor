@@ -7,14 +7,11 @@ using RestSharp;
 
 namespace CBAPITimeTest.TestSections
 {
-    public class CreateResume : ITestSection
+    class CreateResume : TestSectionBase
     {
-        public IRestRequest Request
+        protected override void BuildRequest(IRestRequest request)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
         }
 
         public bool RequireHTTPS
